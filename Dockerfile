@@ -1,14 +1,15 @@
 FROM python:3.9-slim-buster AS builder
 
-ARG FURY_URL
-ARG FURY_AUTH
+ARG PIPSERVER_URL 
+ARG PIPSERVER_USERNAME 
+ARG PIPSERVER_PASSWORD
 
 WORKDIR /app
 
 RUN python -m pip install --upgrade pip && \
     python -m pip install poetry==1.1.15 && \
-    poetry config repositories.fury $FURY_URL && \
-    poetry config http-basic.fury $FURY_AUTH $FURY_AUTH && \
+    poetry config repositories.radar $PIPSERVER_URL && \
+    poetry config http-basic.radar $PIPSERVER_USERNAME $PIPSERVER_PASSWORD && \
     python -m venv /venv
 
 COPY poetry.lock pyproject.toml ./
