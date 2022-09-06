@@ -2,7 +2,7 @@
 name = "cboe-extractor"
 version = "0.1.1"
 description = ""
-authors = ["Ernesto Martinez del Pino <ernesto.martinez@syngenta.com>"]
+authors = ["Ernesto Martinez del Pino <ernestomar1997@hotmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
