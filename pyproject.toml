@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cboe-extractor"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Ernesto Martinez del Pino <ernesto.martinez@syngenta.com>"]
 
@@ -22,3 +22,14 @@ autopep8 = "^1.6.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.run]
+omit = [".*", "*/site-packages/*"]
+
+[tool.coverage.report]
+fail_under = 0
+
+[[tool.poetry.source]]
+name = "radar"
+url = "https://pypiserver.radaroptions.io"
+secondary = true

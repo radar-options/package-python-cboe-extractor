@@ -28,6 +28,11 @@ jobs:
         uses: abatilo/actions-poetry@v2.1.6
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
+      - name: Configure Poetry
+        working-directory: ./main
+        run: |
+          poetry config repositories.radar ${{ secrets.PIPSERVER_URL }}
+          poetry config http-basic.radar ${{ secrets.PIPSERVER_USERNAME }} ${{ secrets.PIPSERVER_PASSWORD }}
       - name: Install Python dependencies
         working-directory: ./main
         run: poetry install
@@ -64,6 +69,11 @@ jobs:
         uses: abatilo/actions-poetry@v2.1.3
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
+      - name: Configure Poetry
+        working-directory: ./main
+        run: |
+          poetry config repositories.omnia ${{ secrets.PIPSERVER_URL }}
+          poetry config http-basic.omnia ${{ secrets.PIPSERVER_USERNAME }} ${{ secrets.PIPSERVER_PASSWORD }}
       - name: Pypiserver Publish
         working-directory: ./main
         run: poetry publish --build
