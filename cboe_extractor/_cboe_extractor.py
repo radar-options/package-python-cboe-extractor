@@ -1,4 +1,3 @@
-from urllib import response
 import requests
 import pandas as pd
 
@@ -17,3 +16,6 @@ class CBOEExtractor:
         df = pd.DataFrame.from_dict(self.data["data"]["options"])
         df["last_trade_time"] = pd.to_datetime(df["last_trade_time"])
         return df
+
+    def get_current_price(self) -> float:
+        return self.data["data"]["current_price"]
